@@ -7,7 +7,8 @@
 # @param destinationFolder The path to the destination folder.
 #' @return None
 #' @export
-syncFolders <- function() {
+
+pullShane <- function() {
     
     sourceFolder <- r"(\\pnl\projects\MSSHARE\Shane_Kelly_MSS\powershel_test_dest)"
     destinationFolder <- r"(C:\Users\kell343\OneDrive - PNNL\Documents\dev\test_source)"
