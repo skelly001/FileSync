@@ -10,5 +10,7 @@ pushShane()
 None
 }
 \description{
-This function synchronizes files between a source folder and a destination folder.
+This function synchronizes files and directory structure between a source folder and a destination folder.
+If a file is modified or deleted in the source folder, it will be updated or deleted in the destination folder.
+The directory structure in the source folder will be replicated in the destination folder.
 }

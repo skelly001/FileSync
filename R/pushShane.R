@@ -1,7 +1,11 @@
 #' Synchronize Folders
 #'
-#' This function synchronizes files between a source folder and a destination folder.
+#' This function synchronizes files and directory structure between a source folder and a destination folder.
+#' If a file is modified or deleted in the source folder, it will be updated or deleted in the destination folder.
+#' The directory structure in the source folder will be replicated in the destination folder.
 #'
+# @param sourceFolder The path to the source folder.
+# @param destinationFolder The path to the destination folder.
 #' @return None
 #' @export
 
@@ -9,6 +13,7 @@ pushShane <- function() {
     
     sourceFolder <- r"(C:\Users\kell343\OneDrive - PNNL\Documents\dev\test_source)"
     destinationFolder <- r"(\\pnl\projects\MSSHARE\Shane_Kelly_MSS\powershel_test_dest)"
+    
     
     # Check if source folder is accessible
     if (!dir.exists(sourceFolder)) {
@@ -22,19 +27,18 @@ pushShane <- function() {
     
     syncFiles <- function(sourcePath, destinationPath) {
         file <- basename(sourcePath)
-        destination <- file.path(destinationPath, sub(sourceFolder, "", file))
+        destination <- file.path(destinationPath, sub(sourceFolder, "", sourcePath))
         
-        tryCatch({
-            if (file.exists(sourcePath)) {
-                file.copy(sourcePath, destination, overwrite = TRUE)
-                cat(paste(file, "- Synced\n"), file = "stdout", append = TRUE)
-            } else if (file.exists(destination)) {
+        if (file.exists(sourcePath)) {
+            dir.create(dirname(destination), recursive = TRUE, showWarnings = FALSE)
+            file.copy(sourcePath, destination, overwrite = TRUE)
+            cat(paste(file, "- Synced\n"), file = "stdout", append = TRUE)
+        } else {
+            if (file.exists(destination)) {
                 file.remove(destination)
                 cat(paste(file, "- Deleted\n"), file = "stdout", append = TRUE)
             }
-        }, error = function(e) {
-            cat(paste(file, "- Sync Failed\n"), file = "stdout", append = TRUE)
-        })
+        }
     }
     
     syncFilesInFolder <- function(folderPath) {
