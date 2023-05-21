@@ -12,5 +12,4 @@ from the source folder to the destination folder.
 }
 \examples{
 synchronizeFolders("C:/Path/to/Source/Folder", "//RemoteComputer/Shared/Folder")
-
 }

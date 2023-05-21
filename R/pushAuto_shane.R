@@ -9,7 +9,10 @@
 #'
 #' @examples
 #' synchronizeFolders("C:/Path/to/Source/Folder", "//RemoteComputer/Shared/Folder")
-#'
+
+
+#' @export
+ 
 pushAuto_shane <- function() {
     
     sourceFolder <- r"(C:\Users\kell343\OneDrive - PNNL\Documents\dev\test_source)"
