@@ -49,6 +49,9 @@ pushShane <- function() {
         }
     }
     
+    sourceFolder <- normalizePath(sourceFolder)
+    destinationFolder <- normalizePath(destinationFolder)
+    
     syncFilesInFolder(sourceFolder)
     
     cat("Folder synchronization completed.\n", file = "stdout")
