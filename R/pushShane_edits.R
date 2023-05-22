@@ -1,12 +1,4 @@
-#' Synchronize Folders
-#'
-#' This function synchronizes files between a source folder and a destination folder.
-#' If a file is modified or deleted in the source folder, it will be updated or deleted in the destination folder.
-#'
-# @param sourceFolder The path to the source folder.
-# @param destinationFolder The path to the destination folder.
-#' @return None
-#' @export
+
 
 pushShane <- function() {
     
@@ -32,8 +24,8 @@ pushShane <- function() {
         tryCatch({
             if (!file.exists(destination)) {
                 if (!file.exists(dirname(destination))) {
-                    dir.create(dirname(destination), recursive = TRUE, showWarnings = FALSE)
-                }
+                dir.create(dirname(destination), recursive = TRUE, showWarnings = FALSE)
+            }
                 file.copy(file, dirname(destination))
                 cat(paste(file, "- Copied\n"), file = "stdout", append = TRUE)
             } else {
@@ -42,7 +34,7 @@ pushShane <- function() {
                 #         file.copy(file, dirname(destination))
                 #     }
                 # }
-                # cat(paste(file, "- Overwritten\n"), file = "stdout", append = TRUE)
+                    # cat(paste(file, "- Overwritten\n"), file = "stdout", append = TRUE)
             }
         }, error = function(e) {
             cat(paste(file, "- Sync Failed\n"), file = "stdout", append = TRUE)
