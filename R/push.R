@@ -79,6 +79,3 @@ push <- function(user = c("shane", "vlad")) {
 #How know which to rename?
 
 
-#How know when to overwrite a file?
-#For sync, how know when to copy/delete?
-#How know which to rename?
