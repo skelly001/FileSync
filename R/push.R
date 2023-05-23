@@ -3,15 +3,22 @@
 #' This function synchronizes files between a source folder and a destination folder.
 #' If a file is modified or deleted in the source folder, it will be updated or deleted in the destination folder.
 #'
-# @param sourceFolder The path to the source folder.
-# @param destinationFolder The path to the destination folder.
+#' @param user The path to the source folder.
 #' @return None
 #' @export
 
-pushShane <- function() {
+push <- function(user = c("shane", "vlad")) {
     
-    sourceFolder <- "C:/Users/kell343/OneDrive - PNNL/Documents/dev/test_source"
-    destinationFolder <- "//pnl/projects/MSSHARE/Shane_Kelly_MSS/powershel_test_dest"
+    if (user == "shane") {
+        sourceFolder <- "C:/Users/kell343/OneDrive - PNNL/Documents/dev/test_source"
+        destinationFolder <- "//pnl/projects/MSSHARE/Shane_Kelly_MSS/powershel_test_dest"
+    } 
+    if (user == "vlad"){
+        sourceFolder <- NULL
+        destinationFolder <- NULL
+        } else {
+            stop("Unregistered user.")
+    }
     
     # Check if source folder is accessible
     if (!dir.exists(sourceFolder)) {
