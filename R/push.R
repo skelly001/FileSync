@@ -9,15 +9,17 @@
 
 push <- function(user = c("shane", "vlad")) {
     
+    print(user == "shane")
     if (user == "shane") {
         sourceFolder <- "C:/Users/kell343/OneDrive - PNNL/Documents/dev/test_source"
         destinationFolder <- "//pnl/projects/MSSHARE/Shane_Kelly_MSS/powershel_test_dest"
-    } 
-    if (user == "vlad"){
-        sourceFolder <- NULL
-        destinationFolder <- NULL
+    } else {
+        if (user == "vlad"){
+            sourceFolder <- NULL
+            destinationFolder <- NULL
         } else {
             stop("Unregistered user.")
+        }
     }
     
     # Check if source folder is accessible
@@ -71,6 +73,11 @@ push <- function(user = c("shane", "vlad")) {
     
     cat("Folder synchronization completed.\n", file = "stdout")
 }
+
+#How know when to overwrite a file?
+#For sync, how know when to copy/delete?
+#How know which to rename?
+
 
 #How know when to overwrite a file?
 #For sync, how know when to copy/delete?
